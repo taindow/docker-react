@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t taindow/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true taindow/docker-react npm run test -- --coverage
